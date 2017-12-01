@@ -1,9 +1,17 @@
 'use strict';
 
-const SeoChecker = require('./seo-checker.js');
+const seoCheck = require('./seo-checker.js');
 const rule1 = require('./rules/images-without-alt.js');
 const rule2 = require('./rules/links_without_rel.js');
 
 const rules = [rule1, rule2];
-const seoTracker = new SeoChecker(rules, './sample.html', 'test');
-seoTracker.check();
+
+seoCheck(rules, './sample.html')
+    .then(issues => {
+        if (issues.length == 0) {
+            console.log('No SEO violations found');
+        }
+        else {
+            console.log(`${issues}`);
+        }
+    });
