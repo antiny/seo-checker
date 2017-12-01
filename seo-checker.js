@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const stream = require('stream');
 const toString = require('stream-to-string');
 const cheerio = require('cheerio');
 
@@ -17,14 +18,8 @@ function _loadDom(source) {
 }
 
 function _domFromStream(source) {
-    return toString(source, function (err, data) {
-        if (err) {
-            reject(err);
-        }
-        else {
-            const $ = cheerio.load(data);
-            resolve($);
-        }
+    return toString(source).then(data => {
+        return cheerio.load(data);
     });
 }
 

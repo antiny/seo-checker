@@ -1,3 +1,7 @@
+/**
+ * read a file
+ */
+
 'use strict';
 
 const seoCheck = require('./seo-checker.js');

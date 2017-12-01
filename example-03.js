@@ -1,16 +1,16 @@
 /**
- * read a file with some custom rules
+ * read a stream
  */
 
 'use strict';
 
+const fs = require('fs');
 const seoCheck = require('./seo-checker.js');
-const rule1 = require('./rules/images-without-alt.js');
-const rule2 = require('./rules/links_without_rel.js');
+const rules = require('./rules');
 
-const rules = [rule1, rule2];
+const source = fs.createReadStream('./sample.html');
 
-seoCheck(rules, './sample.html')
+seoCheck(rules, source)
     .then(issues => {
         if (issues.length == 0) {
             console.log('No SEO violations found');
