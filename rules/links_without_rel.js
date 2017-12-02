@@ -1,9 +1,11 @@
 'use strict';
 
+const util = require('./util');
+
 module.exports = function(dom) {
-    var imageWithoutAlt = dom('img:not([alt])');
-    if (imageWithoutAlt.length > 0) {
-        return { success: false, message: `${imageWithoutAlt.length} images do not have alt attribute` };
+    var imageWithoutAlt = util.countTags(dom, 'img:not([alt])');
+    if (imageWithoutAlt > 0) {
+        return util.error(`${imageWithoutAlt.length} images do not have alt attribute`);
     }
-    return { success: true };
+    return util.success;
 };

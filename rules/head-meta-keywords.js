@@ -1,9 +1,11 @@
 'use strict';
 
+const util = require('./util');
+
 module.exports = function(dom) {
-    const metaKeywordsExist = dom("head meta[name=keywords]").length > 0;
+    const metaKeywordsExist = util.countTags(dom, "head meta[name=keywords]") > 0;
     if (metaKeywordsExist) {
-        return { success: true };
+        return util.success;
     }
-    return { success: false, message: 'meta keywords not found' };
+    return util.error('meta keywords not found');
 };

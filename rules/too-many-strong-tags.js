@@ -1,14 +1,13 @@
 'use strict';
 
+const util = require('./util');
+
 const countStrongTags = (dom, options = { strongTagLimit: 15 }) => {
-    var strongTags = dom('strong').length;
+    var strongTags = util.countTags(dom, 'strong');
     if (strongTags > options.strongTagLimit) {
-        return {
-            success: false,
-            message: `${strongTags} strong tags found, more than a good limit at ${options.strongTagLimit}`
-        };
+        return util.error(`${strongTags} strong tags found, more than a good limit at ${options.strongTagLimit}`);
     }
-    return { success: true };
+    return util.success;
 };
 
 module.exports = countStrongTags;

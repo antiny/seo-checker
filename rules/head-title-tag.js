@@ -1,9 +1,11 @@
 'use strict';
 
+const util = require('./util');
+
 module.exports = function(dom) {
-    const titleTagExist = dom('head title').length > 0;
+    const titleTagExist = util.countTags(dom, 'head title') > 0;
     if (titleTagExist) {
-        return { success: true };
+        return util.success;
     }
-    return { success: false, message: 'title tag not found' };
+    return util.error('title tag not found');
 };
