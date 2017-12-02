@@ -51,4 +51,4 @@ const check = (source, rules = defaultRules) => {
     });
 };
 
-module.exports = { check: check, rules: defaultRules }
+module.exports = { check: check, rules: defaultRules };
