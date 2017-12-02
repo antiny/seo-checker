@@ -10,7 +10,7 @@ const rule2 = require('./rules/links_without_rel.js');
 
 const rules = [rule1, rule2];
 
-seoCheck(rules, './sample.html')
+seoCheck('./sample.html', rules)
     .then(issues => {
         if (issues.length == 0) {
             console.log('No SEO violations found');

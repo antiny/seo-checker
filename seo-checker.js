@@ -4,8 +4,9 @@ const fs = require('fs');
 const stream = require('stream');
 const toString = require('stream-to-string');
 const cheerio = require('cheerio');
+const defaultRules = require('./rules');
 
-function _loadDom(source) {
+const _loadDom = (source) => {
     if (typeof source == 'string') {
         return _domFromFile(source);
     }
@@ -15,15 +16,15 @@ function _loadDom(source) {
     else {
 
     }
-}
+};
 
-function _domFromStream(source) {
+const _domFromStream = (source) => {
     return toString(source).then(data => {
         return cheerio.load(data);
     });
-}
+};
 
-function _domFromFile(filepath) {
+const _domFromFile = (filepath) => {
     return new Promise(function (resolve, reject) {
         fs.readFile(filepath, 'utf-8', (err, data) => {
             if (err) {
@@ -35,9 +36,9 @@ function _domFromFile(filepath) {
             }
         })
     });
-}
+};
 
-module.exports = function (rules, source) {
+module.exports = function (source, rules = defaultRules) {
     return new Promise(function (resolve, reject) {
         _loadDom(source).then(
             dom => {

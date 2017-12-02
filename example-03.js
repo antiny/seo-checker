@@ -10,7 +10,7 @@ const rules = require('./rules');
 
 const source = fs.createReadStream('./sample.html');
 
-seoCheck(rules, source)
+seoCheck(source, rules)
     .then(issues => {
         if (issues.length == 0) {
             console.log('No SEO violations found');
