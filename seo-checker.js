@@ -5,12 +5,16 @@ const _ = require('lodash');
 const stream = require('stream');
 const toString = require('stream-to-string');
 const cheerio = require('cheerio');
+const util = require('./rules/util.js')
 const rulesMap = require('./rules');
 const defaultRules = _.values(rulesMap);
 
 const _loadDom = (source) => {
     if (typeof source == 'string') {
-        return _domFromFile(source);
+        if (source.endsWith('.html')) {
+            return _domFromFile(source);
+        }
+        return _domFromString(source);
     }
     else if (source instanceof stream.Readable) {
         return _domFromStream(source);
@@ -20,9 +24,13 @@ const _loadDom = (source) => {
     }
 };
 
+const _domFromString = (source) => {
+    return Promise.resolve(cheerio.load(source.toLowerCase()));
+};
+
 const _domFromStream = (source) => {
     return toString(source).then(data => {
-        return cheerio.load(data);
+        return cheerio.load(data.toLowerCase());
     });
 };
 
@@ -33,7 +41,7 @@ const _domFromFile = (filepath) => {
                 reject(err);
             }
             else {
-                const $ = cheerio.load(data);
+                const $ = cheerio.load(data.toLowerCase());
                 resolve($);
             }
         })
@@ -55,4 +63,4 @@ const check = (source, rules = defaultRules) => {
     });
 };
 
-module.exports = { check: check, rules: rulesMap, defaultRules: defaultRules };
+module.exports = { check: check, rules: rulesMap, util: util };
