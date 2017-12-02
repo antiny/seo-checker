@@ -5,5 +5,5 @@ module.exports = function(dom) {
     if (metaDescriptionExist) {
         return { success: true };
     }
-    return { success: false, message: 'meta description not found not found' };
+    return { success: false, message: 'meta description not found' };
 };
