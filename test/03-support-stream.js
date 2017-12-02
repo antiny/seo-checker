@@ -11,7 +11,7 @@ test('read a stream', function (t) {
 
     seoChecker.check(source)
         .then(issues => {
-            t.equal(issues.length, 3, 'should find 2 violation')
+            t.equal(issues.length, 3, 'should find 3 violations');
             console.log(`issues: ${issues}`)
         });
 });

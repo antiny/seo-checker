@@ -8,6 +8,6 @@ test('use default rules', function (t) {
 
     seoChecker.check('./sample.html')
         .then(issues => {
-            t.equal(issues.length, 2, 'should find 2 violations')
+            t.equal(issues.length, 3, 'should find 3 violations')
         });
 });

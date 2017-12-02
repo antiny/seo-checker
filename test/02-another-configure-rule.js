@@ -9,6 +9,7 @@ test('read a file with some custom rules', function (t) {
 
     seoChecker.check('./sample.html', rules)
         .then(issues => {
-            t.equal(issues.length, 2, 'should find 2 violation')
+            console.log(`issues: ${issues}`);
+            t.equal(issues.length, 3, 'should find 3 violations');
         });
 });
