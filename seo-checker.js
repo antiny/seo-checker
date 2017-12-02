@@ -14,7 +14,7 @@ const _loadDom = (source) => {
         return _domFromStream(source);
     }
     else {
-
+        return Promise.reject('not supported source');
     }
 };
 
