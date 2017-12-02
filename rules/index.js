@@ -6,5 +6,6 @@ module.exports = [
     require('./head-title-tag.js'),
     require('./head-meta-description.js'),
     require('./head-meta-keywords.js'),
-    require('./too-many-strong-tags.js')
+    require('./too-many-strong-tags.js'),
+    require('./more-than-one-h1.js')
 ];
