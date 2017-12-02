@@ -5,7 +5,7 @@ const stream = require('stream');
 
 const print = (issues, output) => {
     return new Promise(function (resolve, reject) {
-        if (output === undefined) {
+        if (output === undefined || output == null) {
             resolve(issues);
         }
         else if (output instanceof stream.Writable) {
