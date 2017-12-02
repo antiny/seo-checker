@@ -1,10 +1,9 @@
 'use strict';
 
 const test       = require('tape'),
-      seoChecker = require('../seo-checker.js'),
-      rule1      = require('../rules/more-than-one-h1');
+      seoChecker = require('../seo-checker.js');
 
-const rules = [rule1];
+const rules = [seoChecker.rules.h1];
 
 test('one H1 tag', function (t) {
     t.plan(1);

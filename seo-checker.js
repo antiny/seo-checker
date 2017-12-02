@@ -1,10 +1,12 @@
 'use strict';
 
 const fs = require('fs');
+const _ = require('lodash');
 const stream = require('stream');
 const toString = require('stream-to-string');
 const cheerio = require('cheerio');
-const defaultRules = require('./rules');
+const rulesMap = require('./rules');
+const defaultRules = _.values(rulesMap);
 
 const _loadDom = (source) => {
     if (typeof source == 'string') {
@@ -53,4 +55,4 @@ const check = (source, rules = defaultRules) => {
     });
 };
 
-module.exports = { check: check, rules: defaultRules };
+module.exports = { check: check, rules: rulesMap, defaultRules: defaultRules };

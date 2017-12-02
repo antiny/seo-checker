@@ -1,10 +1,9 @@
 'use strict';
 
 const test       = require('tape'),
-      seoChecker = require('../seo-checker.js'),
-      rule1      = require('../rules/head-meta-keywords.js');
+      seoChecker = require('../seo-checker.js');
 
-const rules = [rule1];
+const rules = [seoChecker.rules.keywords];
 
 test('check meta keywords does not exist', function (t) {
     t.plan(2);

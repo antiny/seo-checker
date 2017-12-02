@@ -1,11 +1,11 @@
 'use strict';
 
-module.exports = [
-    require('./images-without-alt.js'),
-    require('./links_without_rel.js'),
-    require('./head-title-tag.js'),
-    require('./head-meta-description.js'),
-    require('./head-meta-keywords.js'),
-    require('./too-many-strong-tags.js'),
-    require('./more-than-one-h1.js')
-];
+module.exports = {
+    'images':       require('./images-without-alt.js'),
+    'links':        require('./links_without_rel.js'),
+    'title':        require('./head-title-tag.js'),
+    'desc':         require('./head-meta-description.js'),
+    'keywords':     require('./head-meta-keywords.js'),
+    'strongTags':   require('./too-many-strong-tags.js'),
+    'h1':           require('./more-than-one-h1.js')
+};

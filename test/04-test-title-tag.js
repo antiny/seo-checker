@@ -1,10 +1,9 @@
 'use strict';
 
 const test       = require('tape'),
-      seoChecker = require('../seo-checker.js'),
-      rule1      = require('../rules/head-title-tag.js');
+      seoChecker = require('../seo-checker.js');
 
-const rules = [rule1];
+const rules = [seoChecker.rules.title];
 
 test('check title tag not exist', function (t) {
     t.plan(2);

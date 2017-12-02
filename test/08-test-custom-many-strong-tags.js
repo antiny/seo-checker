@@ -1,10 +1,10 @@
 'use strict';
 
 const test       = require('tape'),
-      seoChecker = require('../seo-checker.js'),
-      rule1      = require('../rules/too-many-strong-tags.js');
+      seoChecker = require('../seo-checker.js');
 
-const customRule = (dom) => rule1(dom, { strongTagLimit: 10 });
+const strongTagRule = seoChecker.rules.strongTags;
+const customRule = (dom) => strongTagRule(dom, { strongTagLimit: 10 });
 const rules = [customRule];
 
 test('check not many strong tags', function (t) {

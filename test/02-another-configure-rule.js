@@ -1,8 +1,8 @@
 'use strict';
 
 const test       = require('tape'),
-      seoChecker = require('../seo-checker.js'),
-      rules      = require('../rules');
+      seoChecker = require('../seo-checker.js');
+const rules      = seoChecker.defaultRules;
 
 test('read a file with some custom rules', function (t) {
     t.plan(1);
