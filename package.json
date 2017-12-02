@@ -1,6 +1,6 @@
 {
   "name": "sample-seo-checker",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "seo-checker.js",
   "scripts": {
     "test": "node_modules/.bin/tape test/*.js"
