@@ -42,7 +42,9 @@ const check = (source, rules = defaultRules) => {
     return new Promise(function (resolve, reject) {
         _loadDom(source).then(
             dom => {
-                const issues = rules.map(rule => rule(dom));
+                const issues = rules.map(rule => rule(dom))
+                                    .filter(result => result.success == false)
+                                    .map(result => result.message);
                 resolve(issues)
             },
             err => {
